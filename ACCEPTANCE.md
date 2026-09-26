@@ -21,3 +21,8 @@ Done when: Each deferred item is listed and mapped to the full requirement it be
 Statement: The design must explicitly mark unresolved items as TRAINING_GAP rather than inventing details for the WebSocket frame format, the LSM compaction algorithm, and the exact auto-scaling thresholds.
 Verify:    grep -E "TRAINING_GAP" design/20-master-system-design.md && grep -cE "TRAINING_GAP:" design/20-master-system-design.md
 Done when: At least the three named gaps (wire protocol, compaction algorithm, auto-scaling thresholds) are marked as gaps with a TODO.
+
+## AC-20-31   owner: master-system-design   section: design/20-master-system-design.md
+Statement: The design must be organized into explicit phases with a phase summary table mapping each phase to a deliverable and a key guarantee.
+Verify:    grep -E "## Phase Summary" design/20-master-system-design.md && grep -E "^\| 8 \|" design/20-master-system-design.md
+Done when: A phase summary table exists listing every phase with its deliverable and key guarantee.
