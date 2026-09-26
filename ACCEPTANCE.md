@@ -31,3 +31,8 @@ Done when: A phase summary table exists listing every phase with its deliverable
 Statement: Hot partition handling must be addressed with at least two mitigations — splitting a hot conversation's log by seq range and moving the hot conversation to a dedicated shard via static mapping.
 Verify:    grep -E "sub-partitions by .seq. range" design/20-master-system-design.md && grep -E "dedicated shard" design/20-master-system-design.md
 Done when: Both mitigations are present and the static-mapping move is characterized as a data migration rather than a full rehash.
+
+## AC-20-29   owner: master-system-design   section: design/20-master-system-design.md
+Statement: The design must state the availability math for 99.99% (approximately 52 minutes downtime per year) and require over-provisioning headroom so a single node failure does not push remaining nodes past capacity.
+Verify:    grep -E "52 minutes downtime/year" design/20-master-system-design.md && grep -E "headroom" design/20-master-system-design.md
+Done when: The downtime budget is stated and over-provisioning is required as the mitigation.
