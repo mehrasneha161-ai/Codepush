@@ -101,3 +101,8 @@ Done when: The fencing rule is stated as a rejection condition at the log, preve
 Statement: Lock acquire must use set-if-not-exists with expiry semantics and release must verify the token before deleting, so a holder cannot release another holder's lock.
 Verify:    grep -E "SET lock:cid token NX PX" design/20-master-system-design.md && grep -E "only release your own lock" design/20-master-system-design.md
 Done when: The acquire uses NX PX semantics and the release is guarded by a token comparison.
+
+## AC-20-15   owner: master-system-design   section: design/20-master-system-design.md
+Statement: The lock manager must be specified by the four required properties — mutual exclusion, atomic acquire, TTL/auto-release, and fencing — and must state that any system providing these four can serve as the lock manager.
+Verify:    grep -E "Mutual exclusion|Atomic acquire|TTL / auto-release|Fencing" design/20-master-system-design.md && grep -E "If a candidate system provides these four" design/20-master-system-design.md
+Done when: All four properties are enumerated and the design states the properties, not Redis specifically, are the requirement.
