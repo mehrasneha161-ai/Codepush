@@ -111,3 +111,8 @@ Done when: All four properties are enumerated and the design states the properti
 Statement: Distributed locking must be defined at per-conversation granularity, not global and not per-message, with the reason that ordering is only defined within a conversation.
 Verify:    grep -E "Lock per conversation, not per message and not global" design/20-master-system-design.md
 Done when: The granularity decision is stated and justified by the scope of the ordering guarantee.
+
+## AC-20-13   owner: master-system-design   section: design/20-master-system-design.md
+Statement: API servers must be declared stateless with all correctness-relevant state held in broker storage and the presence store, and an auto-scaling policy must define both a scale-out and a scale-in signal.
+Verify:    grep -E "stateless" design/20-master-system-design.md && grep -E "Scale-out|Scale-in" design/20-master-system-design.md
+Done when: The stateless claim is stated with where state actually lives, and both scale-out and scale-in triggers are defined.
