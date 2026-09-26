@@ -196,3 +196,8 @@ Done when: All five fields are enumerated with sizes and a 5-year total storage 
 Statement: The scale estimation must state 2B DAU x 25 msgs/day = 50B msgs/day and derive average QPS (~578k) and peak QPS at 2-3x average.
 Verify:    grep -E "2B|2 billion" design/20-master-system-design.md && grep -E "25" design/20-master-system-design.md && grep -E "50B|50 billion" design/20-master-system-design.md && grep -E "578|578k|578,000" design/20-master-system-design.md && grep -E "peak" design/20-master-system-design.md
 Done when: The DAU, msgs/day, total msgs/day, average QPS, and peak QPS multiplier are all present with the arithmetic shown.
+
+## AC-20-06   owner: master-system-design   section: design/20-master-system-design.md
+Statement: The design must define the MVP as exactly four capabilities — 1-to-1 send/receive text, recent conversation list, chat history, and notifications — with group chat, multimedia, and presence explicitly deferred to extended requirements.
+Verify:    grep -E "MVP" design/20-master-system-design.md && grep -E "1-to-1|one-to-one" design/20-master-system-design.md && grep -E "recent conversation|conversation list" design/20-master-system-design.md && grep -E "chat history" design/20-master-system-design.md && grep -E "notification" design/20-master-system-design.md && grep -E "defer|extended" design/20-master-system-design.md
+Done when: All four MVP capabilities are named and the deferred items (group, multimedia, presence) are marked as extended requirements.
