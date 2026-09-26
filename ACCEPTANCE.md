@@ -56,3 +56,8 @@ Done when: The replica routing for history is stated and the master is scoped to
 Statement: The design must acknowledge that sharding requires the API server to know which shard to forward to, and must describe this as a routing table lookup rather than a broadcast.
 Verify:    grep -E "API server must know which shard to forward to" design/20-master-system-design.md && grep -E "routing table lookup, not a broadcast" design/20-master-system-design.md
 Done when: The routing consequence of sharding is stated and characterized as a lookup.
+
+## AC-20-24   owner: master-system-design   section: design/20-master-system-design.md
+Statement: Masters must be sharded by conversation_id into mutually exclusive subsets so a conversation lives on exactly one shard, preserving ordering without cross-shard coordination.
+Verify:    grep -E "mutually exclusive" design/20-master-system-design.md && grep -E "hash\(conversation_id\) % num_shards" design/20-master-system-design.md
+Done when: The shard function is given and the design states a conversation lives on exactly one shard.
