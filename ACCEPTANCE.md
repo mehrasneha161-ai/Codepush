@@ -36,3 +36,8 @@ Done when: Both mitigations are present and the static-mapping move is character
 Statement: The design must state the availability math for 99.99% (approximately 52 minutes downtime per year) and require over-provisioning headroom so a single node failure does not push remaining nodes past capacity.
 Verify:    grep -E "52 minutes downtime/year" design/20-master-system-design.md && grep -E "headroom" design/20-master-system-design.md
 Done when: The downtime budget is stated and over-provisioning is required as the mitigation.
+
+## AC-20-28   owner: master-system-design   section: design/20-master-system-design.md
+Statement: 99.99% uptime must be supported by leader+follower replication per shard with follower promotion on leader failure, and the fencing token must be named as the safety property preventing a demoted leader from appending.
+Verify:    grep -E "leader \+ followers" design/20-master-system-design.md && grep -E "prevents a demoted leader from continuing to append" design/20-master-system-design.md
+Done when: The replication and promotion model is stated and fencing is tied to failover safety.
