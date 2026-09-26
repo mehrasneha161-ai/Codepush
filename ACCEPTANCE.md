@@ -91,3 +91,8 @@ Done when: All three uses are enumerated and the sync use is explicitly a notifi
 Statement: The design must state that on the single-writer-per-shard LSM layer the lock is only needed at the shard leader and during leader failover, not on the steady-state append path.
 Verify:    grep -E "only needed at the shard leader" design/20-master-system-design.md && grep -E "leader failover" design/20-master-system-design.md
 Done when: The interaction between locking and the single-writer log is stated, with the lock scoped to failover.
+
+## AC-20-17   owner: master-system-design   section: design/20-master-system-design.md
+Statement: Every log write must carry a fencing token and the log must reject a write whose token is lower than the highest token seen for that conversation.
+Verify:    grep -E "fencing token" design/20-master-system-design.md && grep -E "rejects a write whose token is lower" design/20-master-system-design.md
+Done when: The fencing rule is stated as a rejection condition at the log, preventing a stale holder from writing an out-of-order `seq`.
