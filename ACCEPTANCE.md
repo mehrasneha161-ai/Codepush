@@ -71,3 +71,8 @@ Done when: The send-path complexity claim is present and both rejected alternati
 Statement: Group fan-out for 1024 members must be hybrid — write fan-out for online members and read fan-out (cursor pull) for offline members — with a tradeoff table comparing the two strategies.
 Verify:    grep -E "write fan-out|read fan-out" design/20-master-system-design.md && grep -E "1024" design/20-master-system-design.md
 Done when: Both strategies are compared in a table and the hybrid split by online/offline is stated as the decision.
+
+## AC-20-21   owner: master-system-design   section: design/20-master-system-design.md
+Statement: Every dequeued message must carry a receipt handle and deletion must require it, so a consumer that did not read a message cannot delete it.
+Verify:    grep -E "receipt handle" design/20-master-system-design.md && grep -E "cannot delete it" design/20-master-system-design.md
+Done when: The receipt-handle requirement is stated and tied to preventing cross-worker deletion of in-flight messages.
