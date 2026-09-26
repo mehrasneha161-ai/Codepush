@@ -126,3 +126,8 @@ Done when: The core pick/forward logic is present and the production additions a
 Statement: The design must compare WebSocket, Long Polling, and SSE on delivery latency, server-to-client direction, presence fit, and cost, and select WebSocket with a stated reason.
 Verify:    grep -E "WebSocket|Long Polling|SSE" design/20-master-system-design.md && grep -E "<100ms" design/20-master-system-design.md
 Done when: All three transports appear in the comparison table and the decision section names WebSocket as the choice with the <100ms and presence-signal justification.
+
+## AC-20-10   owner: master-system-design   section: design/20-master-system-design.md
+Statement: Phase 2 must state that the custom log-structured/LSM layer is correct if and only if it satisfies G1, G2, and G3, and must derive `seq` from the append-only log offset rather than a separate counter.
+Verify:    grep -E "if and only if it satisfies G1, G2, G3" design/20-master-system-design.md && grep -E "seq = log_offset" design/20-master-system-design.md
+Done when: The correctness criterion is stated and `seq` is shown to be monotonic by construction from the single-writer append-only log.
