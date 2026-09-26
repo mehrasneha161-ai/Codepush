@@ -116,3 +116,8 @@ Done when: The granularity decision is stated and justified by the scope of the 
 Statement: API servers must be declared stateless with all correctness-relevant state held in broker storage and the presence store, and an auto-scaling policy must define both a scale-out and a scale-in signal.
 Verify:    grep -E "stateless" design/20-master-system-design.md && grep -E "Scale-out|Scale-in" design/20-master-system-design.md
 Done when: The stateless claim is stated with where state actually lives, and both scale-out and scale-in triggers are defined.
+
+## AC-20-12   owner: master-system-design   section: design/20-master-system-design.md
+Statement: The load balancer core must be shown as a small reverse-proxy implementation that picks a backend and forwards, with health checks, connection draining, and TLS termination named as production additions.
+Verify:    grep -E "class LoadBalancer" design/20-master-system-design.md && grep -E "health checks|connection draining|TLS termination" design/20-master-system-design.md
+Done when: The core pick/forward logic is present and the production additions are explicitly listed as beyond the core.
