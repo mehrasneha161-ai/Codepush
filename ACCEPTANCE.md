@@ -86,3 +86,8 @@ Done when: The Kafka-to-SQS fan-out pattern is shown and the reason (Kafka paral
 Statement: Message queue usage must be split into three distinct uses — offline push notifications, multi-device sync, and async persistence — with the sync queue carrying notifications rather than message bodies.
 Verify:    grep -E "Offline push notifications|Multi-device sync|Async persistence" design/20-master-system-design.md && grep -E "notify the device that new messages exist, not to carry the messages" design/20-master-system-design.md
 Done when: All three uses are enumerated and the sync use is explicitly a notification, with the device pulling by cursor.
+
+## AC-20-18   owner: master-system-design   section: design/20-master-system-design.md
+Statement: The design must state that on the single-writer-per-shard LSM layer the lock is only needed at the shard leader and during leader failover, not on the steady-state append path.
+Verify:    grep -E "only needed at the shard leader" design/20-master-system-design.md && grep -E "leader failover" design/20-master-system-design.md
+Done when: The interaction between locking and the single-writer log is stated, with the lock scoped to failover.

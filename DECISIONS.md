@@ -2,6 +2,13 @@
 
 Newest first.
 
+## DEC-016 — MASTER SYSTEM DESIGN proposes AC-20-18 for design/20-master-system-design.md (QA)
+
+- Target: `ACCEPTANCE.md`
+- Proposed by: MASTER SYSTEM DESIGN
+- Decision: approve, by client 5a311493-ad11-45df-9529-babde1f4fa76 on 2026-09-26T08:08:17Z
+- Amendment: aa76b879-4a9b-4cfd-b2a8-54cb02e4c5b1
+
 ## DEC-015 — MASTER SYSTEM DESIGN proposes AC-20-19 for design/20-master-system-design.md (QA)
 
 - Target: `ACCEPTANCE.md`
