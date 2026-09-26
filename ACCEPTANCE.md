@@ -76,3 +76,8 @@ Done when: Both strategies are compared in a table and the hybrid split by onlin
 Statement: Every dequeued message must carry a receipt handle and deletion must require it, so a consumer that did not read a message cannot delete it.
 Verify:    grep -E "receipt handle" design/20-master-system-design.md && grep -E "cannot delete it" design/20-master-system-design.md
 Done when: The receipt-handle requirement is stated and tied to preventing cross-worker deletion of in-flight messages.
+
+## AC-20-20   owner: master-system-design   section: design/20-master-system-design.md
+Statement: The high-fan-out notification path must combine Kafka's bounded parallelism with SQS fan-out, where each Kafka consumer round-robins into M SQS queues each with an independent worker pool.
+Verify:    grep -E "Kafka \(N partitions, N consumers\)" design/20-master-system-design.md && grep -E "round-robin into M SQS queues" design/20-master-system-design.md
+Done when: The Kafka-to-SQS fan-out pattern is shown and the reason (Kafka parallelism bounded by partition count) is stated.
