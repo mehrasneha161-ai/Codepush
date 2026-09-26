@@ -161,3 +161,8 @@ Done when: The sharding decision is explicit and a shard key is named.
 Statement: The design must justify the SQL vs NoSQL choice for the message store with an explicit decision and reasoning.
 Verify:    grep -E "SQL|NoSQL|relational" design/20-master-system-design.md && grep -E "justif|because|reason" design/20-master-system-design.md
 Done when: A storage choice is made and the justification is stated.
+
+## AC-20-13   owner: master-system-design   section: design/20-master-system-design.md
+Statement: The design must include a text description of the HLD architecture diagram covering client, API tier, broker/storage, and real-time transport.
+Verify:    grep -E "architecture|diagram" design/20-master-system-design.md && grep -E "client" design/20-master-system-design.md && grep -E "API" design/20-master-system-design.md && grep -E "broker|storage" design/20-master-system-design.md
+Done when: A textual architecture description names the client, API tier, storage/broker, and transport layers.
