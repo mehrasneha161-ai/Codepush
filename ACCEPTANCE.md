@@ -16,3 +16,8 @@ AC-20-5, master-system-design, 20, Scalability covers sharding by conversation_i
 Statement: The design must map each deferred extended requirement (group chat, multimedia, presence) to its full-requirement counterpart so the MVP-to-full path is traceable.
 Verify:    grep -E "group" design/20-master-system-design.md && grep -E "multimedia|image|video" design/20-master-system-design.md && grep -E "presence|online|last seen" design/20-master-system-design.md
 Done when: Each deferred item is listed and mapped to the full requirement it becomes.
+
+## AC-20-32   owner: master-system-design   section: design/20-master-system-design.md
+Statement: The design must explicitly mark unresolved items as TRAINING_GAP rather than inventing details for the WebSocket frame format, the LSM compaction algorithm, and the exact auto-scaling thresholds.
+Verify:    grep -E "TRAINING_GAP" design/20-master-system-design.md && grep -cE "TRAINING_GAP:" design/20-master-system-design.md
+Done when: At least the three named gaps (wire protocol, compaction algorithm, auto-scaling thresholds) are marked as gaps with a TODO.
