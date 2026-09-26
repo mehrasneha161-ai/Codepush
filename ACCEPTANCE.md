@@ -96,3 +96,8 @@ Done when: The interaction between locking and the single-writer log is stated, 
 Statement: Every log write must carry a fencing token and the log must reject a write whose token is lower than the highest token seen for that conversation.
 Verify:    grep -E "fencing token" design/20-master-system-design.md && grep -E "rejects a write whose token is lower" design/20-master-system-design.md
 Done when: The fencing rule is stated as a rejection condition at the log, preventing a stale holder from writing an out-of-order `seq`.
+
+## AC-20-16   owner: master-system-design   section: design/20-master-system-design.md
+Statement: Lock acquire must use set-if-not-exists with expiry semantics and release must verify the token before deleting, so a holder cannot release another holder's lock.
+Verify:    grep -E "SET lock:cid token NX PX" design/20-master-system-design.md && grep -E "only release your own lock" design/20-master-system-design.md
+Done when: The acquire uses NX PX semantics and the release is guarded by a token comparison.
