@@ -106,3 +106,8 @@ Done when: The acquire uses NX PX semantics and the release is guarded by a toke
 Statement: The lock manager must be specified by the four required properties — mutual exclusion, atomic acquire, TTL/auto-release, and fencing — and must state that any system providing these four can serve as the lock manager.
 Verify:    grep -E "Mutual exclusion|Atomic acquire|TTL / auto-release|Fencing" design/20-master-system-design.md && grep -E "If a candidate system provides these four" design/20-master-system-design.md
 Done when: All four properties are enumerated and the design states the properties, not Redis specifically, are the requirement.
+
+## AC-20-14   owner: master-system-design   section: design/20-master-system-design.md
+Statement: Distributed locking must be defined at per-conversation granularity, not global and not per-message, with the reason that ordering is only defined within a conversation.
+Verify:    grep -E "Lock per conversation, not per message and not global" design/20-master-system-design.md
+Done when: The granularity decision is stated and justified by the scope of the ordering guarantee.
