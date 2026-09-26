@@ -136,3 +136,8 @@ Done when: The correctness criterion is stated and `seq` is shown to be monotoni
 Statement: Presence must be declared eventually consistent, stored outside the message log, and driven by WebSocket connect/disconnect plus a heartbeat.
 Verify:    grep -E "eventually consistent" design/20-master-system-design.md && grep -E "on WS connect|on WS disconnect|heartbeat" design/20-master-system-design.md
 Done when: The design states presence is eventually consistent, gives the connect/disconnect upsert, and specifies a heartbeat interval that marks a user offline on miss.
+
+## AC-20-08   owner: master-system-design   section: design/20-master-system-design.md
+Statement: Exactly-once delivery must be enforced by a unique idempotency key on `(conversation_id, client_msg_id)` in Phase 1 and by a `client_msg_id -> seq` secondary index in Phase 2.
+Verify:    grep -E "UNIQUE \(conversation_id, client_msg_id\)" design/20-master-system-design.md && grep -E "client_msg_id -> seq" design/20-master-system-design.md
+Done when: Both the relational unique constraint and the LSM idempotency index are present, and the design states a retry returns the existing `seq` without appending.
