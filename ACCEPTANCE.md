@@ -12,3 +12,7 @@ AC-20-4, master-system-design, 20, Group fan-out for 1024 members is hybrid (wri
 
 AC-20-5, master-system-design, 20, Scalability covers sharding by conversation_id into mutually exclusive subsets, read replicas for history, tiered storage, and 99.99% uptime via replication., `grep -E "mutually exclusive|read replicas|tiered|99.99" design/20-master-system-design.md`, All four scalability/availability topics are present.
 
+## AC-20-16   owner: master-system-design   section: design/20-master-system-design.md
+Statement: The design must map each deferred extended requirement (group chat, multimedia, presence) to its full-requirement counterpart so the MVP-to-full path is traceable.
+Verify:    grep -E "group" design/20-master-system-design.md && grep -E "multimedia|image|video" design/20-master-system-design.md && grep -E "presence|online|last seen" design/20-master-system-design.md
+Done when: Each deferred item is listed and mapped to the full requirement it becomes.
