@@ -186,3 +186,8 @@ Done when: The compromise is explicitly named and tied to the read/write-heavy a
 Statement: The design must analyze read vs write heaviness, stating messenger is roughly 1:1 to 2:1 read:write and contrasting it with Instagram's write-once-read-many pattern.
 Verify:    grep -E "1:1|2:1|read.heavy|write.heavy" design/20-master-system-design.md && grep -E "Instagram" design/20-master-system-design.md
 Done when: The read:write ratio is stated and the Instagram contrast is present.
+
+## AC-20-08   owner: master-system-design   section: design/20-master-system-design.md
+Statement: The 5-year storage estimate must be computed from per-message fields sender ID + recipient ID + message ID + text content + timestamp, with the byte size per field stated.
+Verify:    grep -E "sender" design/20-master-system-design.md && grep -E "recipient" design/20-master-system-design.md && grep -E "message ID|message_id" design/20-master-system-design.md && grep -E "timestamp" design/20-master-system-design.md && grep -E "5.year|five.year|5 year" design/20-master-system-design.md
+Done when: All five fields are enumerated with sizes and a 5-year total storage figure is derived.
