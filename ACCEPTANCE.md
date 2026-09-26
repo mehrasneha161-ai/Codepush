@@ -156,3 +156,8 @@ Done when: All three guarantee labels appear, and the Phase 2 guarantee checklis
 Statement: The design must state whether sharding is required based on the scale estimate, and if so, name the shard key.
 Verify:    grep -E "shard" design/20-master-system-design.md && grep -E "conversation_id|user_id" design/20-master-system-design.md
 Done when: The sharding decision is explicit and a shard key is named.
+
+## AC-20-14   owner: master-system-design   section: design/20-master-system-design.md
+Statement: The design must justify the SQL vs NoSQL choice for the message store with an explicit decision and reasoning.
+Verify:    grep -E "SQL|NoSQL|relational" design/20-master-system-design.md && grep -E "justif|because|reason" design/20-master-system-design.md
+Done when: A storage choice is made and the justification is stated.
