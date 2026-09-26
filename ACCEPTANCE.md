@@ -166,3 +166,8 @@ Done when: A storage choice is made and the justification is stated.
 Statement: The design must include a text description of the HLD architecture diagram covering client, API tier, broker/storage, and real-time transport.
 Verify:    grep -E "architecture|diagram" design/20-master-system-design.md && grep -E "client" design/20-master-system-design.md && grep -E "API" design/20-master-system-design.md && grep -E "broker|storage" design/20-master-system-design.md
 Done when: A textual architecture description names the client, API tier, storage/broker, and transport layers.
+
+## AC-20-12   owner: master-system-design   section: design/20-master-system-design.md
+Statement: The API section must define sendMessage, getMessages, and createGroup with a max group size of 1024.
+Verify:    grep -E "sendMessage" design/20-master-system-design.md && grep -E "getMessages" design/20-master-system-design.md && grep -E "createGroup" design/20-master-system-design.md && grep -E "1024" design/20-master-system-design.md
+Done when: All three APIs are defined and the 1024 group cap is stated.
