@@ -151,3 +151,8 @@ Done when: The `messages` table declares `seq` as NOT NULL and includes `(conver
 Statement: The design must name all three guarantees (G1 ordering, G2 exactly-once, G3 presence) and show both a Phase 1 relational mechanism and a Phase 2 LSM mechanism for each.
 Verify:    grep -E "G1|G2|G3" design/20-master-system-design.md && grep -E "PRIMARY KEY \(conversation_id, seq\)|UNIQUE \(conversation_id, client_msg_id\)|append-only log offset" design/20-master-system-design.md
 Done when: All three guarantee labels appear, and the Phase 2 guarantee checklist table maps each to a relational mechanism and an LSM mechanism.
+
+## AC-20-15   owner: master-system-design   section: design/20-master-system-design.md
+Statement: The design must state whether sharding is required based on the scale estimate, and if so, name the shard key.
+Verify:    grep -E "shard" design/20-master-system-design.md && grep -E "conversation_id|user_id" design/20-master-system-design.md
+Done when: The sharding decision is explicit and a shard key is named.
