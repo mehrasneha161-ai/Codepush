@@ -46,3 +46,8 @@ Done when: The replication and promotion model is stated and fencing is tied to 
 Statement: Tiered storage must define at least three tiers (hot, warm, cold) with contents, access latency, and cost, and must place media/files in blob storage referenced by URL while message bodies stay in the log.
 Verify:    grep -E "Hot \(LSM|Warm \(infrequent access\)|Cold \(glacier-class\)" design/20-master-system-design.md && grep -E "media is referenced by URL" design/20-master-system-design.md
 Done when: All three tiers are defined with latency and cost, and the media-vs-body split is stated.
+
+## AC-20-26   owner: master-system-design   section: design/20-master-system-design.md
+Statement: History reads must be routed to read replicas per shard while the master handles only writes, separating the read path from the write path.
+Verify:    grep -E "read replicas" design/20-master-system-design.md && grep -E "master handles only writes" design/20-master-system-design.md
+Done when: The replica routing for history is stated and the master is scoped to the write path.
