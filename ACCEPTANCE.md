@@ -171,3 +171,8 @@ Done when: A textual architecture description names the client, API tier, storag
 Statement: The API section must define sendMessage, getMessages, and createGroup with a max group size of 1024.
 Verify:    grep -E "sendMessage" design/20-master-system-design.md && grep -E "getMessages" design/20-master-system-design.md && grep -E "createGroup" design/20-master-system-design.md && grep -E "1024" design/20-master-system-design.md
 Done when: All three APIs are defined and the 1024 group cap is stated.
+
+## AC-20-11   owner: master-system-design   section: design/20-master-system-design.md
+Statement: The NFRs must state <100ms delivery latency, 99.99% availability, and strict message ordering consistency.
+Verify:    grep -E "100ms|100 ms" design/20-master-system-design.md && grep -E "99.99" design/20-master-system-design.md && grep -E "ordering|order" design/20-master-system-design.md
+Done when: All three NFRs appear with their target values.
