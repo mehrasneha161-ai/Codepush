@@ -26,3 +26,8 @@ Done when: At least the three named gaps (wire protocol, compaction algorithm, a
 Statement: The design must be organized into explicit phases with a phase summary table mapping each phase to a deliverable and a key guarantee.
 Verify:    grep -E "## Phase Summary" design/20-master-system-design.md && grep -E "^\| 8 \|" design/20-master-system-design.md
 Done when: A phase summary table exists listing every phase with its deliverable and key guarantee.
+
+## AC-20-30   owner: master-system-design   section: design/20-master-system-design.md
+Statement: Hot partition handling must be addressed with at least two mitigations — splitting a hot conversation's log by seq range and moving the hot conversation to a dedicated shard via static mapping.
+Verify:    grep -E "sub-partitions by .seq. range" design/20-master-system-design.md && grep -E "dedicated shard" design/20-master-system-design.md
+Done when: Both mitigations are present and the static-mapping move is characterized as a data migration rather than a full rehash.
