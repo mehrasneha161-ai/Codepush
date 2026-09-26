@@ -131,3 +131,8 @@ Done when: All three transports appear in the comparison table and the decision 
 Statement: Phase 2 must state that the custom log-structured/LSM layer is correct if and only if it satisfies G1, G2, and G3, and must derive `seq` from the append-only log offset rather than a separate counter.
 Verify:    grep -E "if and only if it satisfies G1, G2, G3" design/20-master-system-design.md && grep -E "seq = log_offset" design/20-master-system-design.md
 Done when: The correctness criterion is stated and `seq` is shown to be monotonic by construction from the single-writer append-only log.
+
+## AC-20-09   owner: master-system-design   section: design/20-master-system-design.md
+Statement: Presence must be declared eventually consistent, stored outside the message log, and driven by WebSocket connect/disconnect plus a heartbeat.
+Verify:    grep -E "eventually consistent" design/20-master-system-design.md && grep -E "on WS connect|on WS disconnect|heartbeat" design/20-master-system-design.md
+Done when: The design states presence is eventually consistent, gives the connect/disconnect upsert, and specifies a heartbeat interval that marks a user offline on miss.
