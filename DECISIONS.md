@@ -2,6 +2,13 @@
 
 Newest first.
 
+## DEC-037 — High Level Design SLR proposes AC-20-07 for design/20-master-system-design.md (QA)
+
+- Target: `ACCEPTANCE.md`
+- Proposed by: High Level Design SLR
+- Decision: approve, by client 5a311493-ad11-45df-9529-babde1f4fa76 on 2026-09-26T08:08:24Z
+- Amendment: 970008c9-36ef-42e1-96ad-d3ad34a38d60
+
 ## DEC-036 — High Level Design SLR proposes AC-20-08 for design/20-master-system-design.md (QA)
 
 - Target: `ACCEPTANCE.md`

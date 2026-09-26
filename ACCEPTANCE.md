@@ -191,3 +191,8 @@ Done when: The read:write ratio is stated and the Instagram contrast is present.
 Statement: The 5-year storage estimate must be computed from per-message fields sender ID + recipient ID + message ID + text content + timestamp, with the byte size per field stated.
 Verify:    grep -E "sender" design/20-master-system-design.md && grep -E "recipient" design/20-master-system-design.md && grep -E "message ID|message_id" design/20-master-system-design.md && grep -E "timestamp" design/20-master-system-design.md && grep -E "5.year|five.year|5 year" design/20-master-system-design.md
 Done when: All five fields are enumerated with sizes and a 5-year total storage figure is derived.
+
+## AC-20-07   owner: master-system-design   section: design/20-master-system-design.md
+Statement: The scale estimation must state 2B DAU x 25 msgs/day = 50B msgs/day and derive average QPS (~578k) and peak QPS at 2-3x average.
+Verify:    grep -E "2B|2 billion" design/20-master-system-design.md && grep -E "25" design/20-master-system-design.md && grep -E "50B|50 billion" design/20-master-system-design.md && grep -E "578|578k|578,000" design/20-master-system-design.md && grep -E "peak" design/20-master-system-design.md
+Done when: The DAU, msgs/day, total msgs/day, average QPS, and peak QPS multiplier are all present with the arithmetic shown.
