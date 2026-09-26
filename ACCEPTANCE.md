@@ -181,3 +181,8 @@ Done when: All three NFRs appear with their target values.
 Statement: The design must state that a system that is both read and write heavy cannot be optimized perfectly for both, and must name the storage compromise taken.
 Verify:    grep -E "compromise|trade.?off" design/20-master-system-design.md && grep -E "read" design/20-master-system-design.md && grep -E "write" design/20-master-system-design.md
 Done when: The compromise is explicitly named and tied to the read/write-heavy analysis.
+
+## AC-20-09   owner: master-system-design   section: design/20-master-system-design.md
+Statement: The design must analyze read vs write heaviness, stating messenger is roughly 1:1 to 2:1 read:write and contrasting it with Instagram's write-once-read-many pattern.
+Verify:    grep -E "1:1|2:1|read.heavy|write.heavy" design/20-master-system-design.md && grep -E "Instagram" design/20-master-system-design.md
+Done when: The read:write ratio is stated and the Instagram contrast is present.
