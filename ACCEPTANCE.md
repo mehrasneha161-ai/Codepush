@@ -81,3 +81,8 @@ Done when: The receipt-handle requirement is stated and tied to preventing cross
 Statement: The high-fan-out notification path must combine Kafka's bounded parallelism with SQS fan-out, where each Kafka consumer round-robins into M SQS queues each with an independent worker pool.
 Verify:    grep -E "Kafka \(N partitions, N consumers\)" design/20-master-system-design.md && grep -E "round-robin into M SQS queues" design/20-master-system-design.md
 Done when: The Kafka-to-SQS fan-out pattern is shown and the reason (Kafka parallelism bounded by partition count) is stated.
+
+## AC-20-19   owner: master-system-design   section: design/20-master-system-design.md
+Statement: Message queue usage must be split into three distinct uses — offline push notifications, multi-device sync, and async persistence — with the sync queue carrying notifications rather than message bodies.
+Verify:    grep -E "Offline push notifications|Multi-device sync|Async persistence" design/20-master-system-design.md && grep -E "notify the device that new messages exist, not to carry the messages" design/20-master-system-design.md
+Done when: All three uses are enumerated and the sync use is explicitly a notification, with the device pulling by cursor.
