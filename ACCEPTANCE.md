@@ -66,3 +66,8 @@ Done when: The shard function is given and the design states a conversation live
 Statement: The design must state that the hybrid fan-out keeps the send path O(online members) rather than O(1024), and must reject pure write fan-out and pure read fan-out with a stated reason for each.
 Verify:    grep -E "O\(online members\)" design/20-master-system-design.md && grep -E "Why not pure write fan-out|Why not pure read fan-out" design/20-master-system-design.md
 Done when: The send-path complexity claim is present and both rejected alternatives have a stated reason.
+
+## AC-20-22   owner: master-system-design   section: design/20-master-system-design.md
+Statement: Group fan-out for 1024 members must be hybrid — write fan-out for online members and read fan-out (cursor pull) for offline members — with a tradeoff table comparing the two strategies.
+Verify:    grep -E "write fan-out|read fan-out" design/20-master-system-design.md && grep -E "1024" design/20-master-system-design.md
+Done when: Both strategies are compared in a table and the hybrid split by online/offline is stated as the decision.
