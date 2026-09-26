@@ -121,3 +121,8 @@ Done when: The stateless claim is stated with where state actually lives, and bo
 Statement: The load balancer core must be shown as a small reverse-proxy implementation that picks a backend and forwards, with health checks, connection draining, and TLS termination named as production additions.
 Verify:    grep -E "class LoadBalancer" design/20-master-system-design.md && grep -E "health checks|connection draining|TLS termination" design/20-master-system-design.md
 Done when: The core pick/forward logic is present and the production additions are explicitly listed as beyond the core.
+
+## AC-20-11   owner: master-system-design   section: design/20-master-system-design.md
+Statement: The design must compare WebSocket, Long Polling, and SSE on delivery latency, server-to-client direction, presence fit, and cost, and select WebSocket with a stated reason.
+Verify:    grep -E "WebSocket|Long Polling|SSE" design/20-master-system-design.md && grep -E "<100ms" design/20-master-system-design.md
+Done when: All three transports appear in the comparison table and the decision section names WebSocket as the choice with the <100ms and presence-signal justification.
