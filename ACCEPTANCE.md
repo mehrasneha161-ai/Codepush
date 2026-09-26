@@ -41,3 +41,8 @@ Done when: The downtime budget is stated and over-provisioning is required as th
 Statement: 99.99% uptime must be supported by leader+follower replication per shard with follower promotion on leader failure, and the fencing token must be named as the safety property preventing a demoted leader from appending.
 Verify:    grep -E "leader \+ followers" design/20-master-system-design.md && grep -E "prevents a demoted leader from continuing to append" design/20-master-system-design.md
 Done when: The replication and promotion model is stated and fencing is tied to failover safety.
+
+## AC-20-27   owner: master-system-design   section: design/20-master-system-design.md
+Statement: Tiered storage must define at least three tiers (hot, warm, cold) with contents, access latency, and cost, and must place media/files in blob storage referenced by URL while message bodies stay in the log.
+Verify:    grep -E "Hot \(LSM|Warm \(infrequent access\)|Cold \(glacier-class\)" design/20-master-system-design.md && grep -E "media is referenced by URL" design/20-master-system-design.md
+Done when: All three tiers are defined with latency and cost, and the media-vs-body split is stated.
