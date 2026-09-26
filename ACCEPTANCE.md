@@ -141,3 +141,8 @@ Done when: The design states presence is eventually consistent, gives the connec
 Statement: Exactly-once delivery must be enforced by a unique idempotency key on `(conversation_id, client_msg_id)` in Phase 1 and by a `client_msg_id -> seq` secondary index in Phase 2.
 Verify:    grep -E "UNIQUE \(conversation_id, client_msg_id\)" design/20-master-system-design.md && grep -E "client_msg_id -> seq" design/20-master-system-design.md
 Done when: Both the relational unique constraint and the LSM idempotency index are present, and the design states a retry returns the existing `seq` without appending.
+
+## AC-20-07   owner: master-system-design   section: design/20-master-system-design.md
+Statement: The Phase 1 schema must define a per-conversation monotonic `seq` as part of the messages primary key, so ordering is enforced by the storage layer rather than by the client.
+Verify:    grep -E "seq +BIGINT NOT NULL" design/20-master-system-design.md && grep -E "PRIMARY KEY \(conversation_id, seq\)" design/20-master-system-design.md
+Done when: The `messages` table declares `seq` as NOT NULL and includes `(conversation_id, seq)` as its primary key.
